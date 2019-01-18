@@ -9,23 +9,33 @@
     <div id="app">
       <form class="form" action="index.html" method="post">
         <h2>Rent Per Week (£)</h2>
-        <input class="rentPerWeek" type="number" name="rentPerWeek" value="">
+        <input type="number" id="foo" value="">
         <h2>Postcode</h2>
         <input type="text" name="postcode" value="">
         <h2>Membership Fee</h2>
-        <data class="fee" value="fee"></data>
+        <p id="result"></p>
       </form>
-      <button type="button" name="button">SUBMIT</button>
+      <button onclick="getValue()" type="button" name="button">SUBMIT</button>
 
 
     </div>
     <script>
-    let rentPerWeek = document.querySelector('.rentPerWeek');
-    function fee(rentPerWeek) {
-      return (rentPerWeek / 100 ) * 20 + rentPerWeek;
-      document.innerHTML('fee')
+    function getValue() {
+      var y = document.getElementById('result');
+      var x = document.getElementById('foo').value;
+      y.innerHTML = x;
     }
-    console.log(fee);
+
+
+    const input = document.getElementById('rent');
+
+
+    // Works out what fee will be:
+    function fee(foo) {
+      console.log(value);
+      return (input / 100 ) * 20 + input;
+    }
+
     </script>
   </body>
 </html>
