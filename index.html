@@ -3,35 +3,62 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Single Page App FlatFair</title>
   </head>
   <body>
     <div id="app">
       <form class="form" action="index.html" method="post">
         <h2>Rent Per Week (£)</h2>
-        <input type="number" id="foo" value="">
+        <input type="number" min="25" max="2000" id="foo" value="" required="true" >
         <h2>Postcode</h2>
         <input type="text" name="postcode" value="">
-        <h2>Membership Fee</h2>
-        <p id="result"></p>
+        <h2>Membership Fee Total:</h2>
+        <h3 id="result"></h3>
       </form>
-      <button onclick="getValue()" type="button" name="button">SUBMIT</button>
-
+      <button class="button is-info is-outlined" onclick="getValue()" type="button" name="button">SUBMIT</button>
 
     </div>
     <script>
     function getValue() {
-      var y = document.getElementById('result');
-      var x = parseInt(document.getElementById('foo').value);
-      var z = (x / 100) * 20 + x;
+      const y = document.getElementById('result');
+      const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
+      const z = (x / 100) * 20 + x;
+      // if(x = 25 || return '');
+      // if(x => 2000) {
+      //   return
+      // }
+      // if(x = '' || display:'Enter Rent');
       // console.log(x);
-      y.innerHTML  = z;
+      y.innerHTML  = '£' + z;
     }
     // Works out what fee will be:
     // function fee(foo) {
     //   return (foo / 100 ) * 20 + foo;
     // }
 
+
     </script>
   </body>
 </html>
+
+// Create a request variable and assign a new XMLHttpRequest object to it.
+const request = new XMLHttpRequest();
+// Open a new connection, using the GET request on the URL endpoint
+request.open('GET', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/config', true);
+request.onload = function () {
+  // Begin accessing JSON data here
+}
+// Send request
+request.send();
+
+// Create a request variable and assign a new XMLHttpRequest object to it.
+const request = new XMLHttpRequest();
+// Open a new connection, using the GET request on the URL endpoint
+request.open('POST', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/flatbond', true);
+request.onload = function () {
+  // Begin accessing JSON data here
+}
+// Send request
+request.send();
