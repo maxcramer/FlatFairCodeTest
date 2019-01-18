@@ -22,19 +22,15 @@
     <script>
     function getValue() {
       var y = document.getElementById('result');
-      var x = document.getElementById('foo').value;
-      y.innerHTML = x;
+      var x = parseInt(document.getElementById('foo').value);
+      var z = (x / 100) * 20 + x;
+      // console.log(x);
+      y.innerHTML  = z;
     }
-
-
-    const input = document.getElementById('rent');
-
-
     // Works out what fee will be:
-    function fee(foo) {
-      console.log(value);
-      return (input / 100 ) * 20 + input;
-    }
+    // function fee(foo) {
+    //   return (foo / 100 ) * 20 + foo;
+    // }
 
     </script>
   </body>
