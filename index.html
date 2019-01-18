@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/master.css">
+    <title>Single Page App FlatFair</title>
+  </head>
+  <body>
+    <div id="app">
+      <form class="form" action="index.html" method="post">
+        <h2>Rent Per Week (£)</h2>
+        <input class="rentPerWeek" type="number" name="rentPerWeek" value="">
+        <h2>Postcode</h2>
+        <input type="text" name="postcode" value="">
+        <h2>Membership Fee</h2>
+        <data class="fee" value="fee"></data>
+      </form>
+      <button type="button" name="button">SUBMIT</button>
+
+
+    </div>
+    <script>
+    let rentPerWeek = document.querySelector('.rentPerWeek');
+    function fee(rentPerWeek) {
+      return (rentPerWeek / 100 ) * 20 + rentPerWeek;
+      document.innerHTML('fee')
+    }
+    console.log(fee);
+    </script>
+  </body>
+</html>
