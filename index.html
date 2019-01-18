@@ -25,8 +25,8 @@
       const y = document.getElementById('result');
       const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
       const z = (x / 100) * 20 + x;
-      if(z <= 120) {
-        return(y.innerHTML = 144);
+      if(x <= 120) {
+        return(y.innerHTML = '£' + 144);
       } else {
         (x / 100) * 20 + x
       }
