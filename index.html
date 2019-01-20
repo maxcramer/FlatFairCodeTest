@@ -18,22 +18,10 @@
         <h3 id="result"></h3>
       </form>
       <button class="button is-info is-outlined" onclick="getValue()" type="button" name="button">Click to find Membership fee</button>
-      <button class="button is-info is-outlined" type="button" name="button">Submit Flatbond</button>
+      <button class="button is-info is-outlined" type="submit" onclick="UserAction()">Submit</button>
+      <!-- <button class="button is-info is-outlined" type="button" name="button">Submit Flatbond</button> -->
     </div>
     <script>
-    // Create a request variable and assign a new XMLHttpRequest object to it.
-    const request = new XMLHttpRequest();
-    // Open a new connection, using the GET request on the URL endpoint
-    request.open('GET', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/config', true);
-    request.onload = function () {
-      // Begin accessing JSON data here
-      var data = JSON.parse(this.response);
-      console.log(data);
-    }
-    // Send request
-    request.send();
-
-
     function getValue() {
       const y = document.getElementById('result');
       const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
@@ -60,29 +48,38 @@
     //   return (foo / 100 ) * 20 + foo;
     // }
 
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    const request = new XMLHttpRequest();
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/config', true);
+    request.onload = function () {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
+      if (request.status >= 200 && request.status < 400) {
+        console.log(data);
+      };
+    }
+    // Send request
+    request.send();
+
+
+    function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
+    const z = (x / 100) * 20 + x;
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             console.log(this);
+             console.log(z);
+
+         }
+    };
+    xhttp.open("POST", "https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/flatbond", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
 
 
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-// Create a request variable and assign a new XMLHttpRequest object to it.
-const request = new XMLHttpRequest();
-// Open a new connection, using the GET request on the URL endpoint
-request.open('POST', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/flatbond', true);
-request.onload = function () {
-  // Begin accessing JSON data here
-}
-// Send request
-request.send();
