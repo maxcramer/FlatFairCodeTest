@@ -23,7 +23,7 @@ input {
 }
 
 .padding_top {
-  padding-top: 15px;
+  padding-top: 13px;
 }
 
 .card {
@@ -34,8 +34,8 @@ input {
   align-content: space-between;
   align-items: center;
   text-align: center;
-  border-bottom: grey 1.3px solid;
-  border-right: grey 1.3px solid;
+  border-bottom: #b3b3b3 1.4px solid;
+  border-right: #b3b3b3 1.4px solid;
   border-radius: 5px;
 }
 
@@ -48,5 +48,6 @@ input {
 
 .button:hover {
   width: 11vw;
-  height: 5vh;
+  height: 6vh;
+  font-size: 18px;
 }
