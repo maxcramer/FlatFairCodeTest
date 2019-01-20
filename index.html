@@ -8,7 +8,7 @@
     <title>Single Page App FlatFair</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="card">
       <form class="form" action="index.html" method="post">
         <h2>Rent Per Week (£)</h2>
         <input type="number" min="25" max="2000" id="foo" value="" required="true" >
@@ -17,16 +17,32 @@
         <h2>Membership Fee Total:</h2>
         <h3 id="result"></h3>
       </form>
-      <button class="button is-info is-outlined" onclick="getValue()" type="button" name="button">SUBMIT</button>
-
+      <button class="button is-info is-outlined" onclick="getValue()" type="button" name="button">Click to find Membership fee</button>
+      <button class="button is-info is-outlined" type="button" name="button">Submit Flatbond</button>
     </div>
     <script>
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    const request = new XMLHttpRequest();
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/config', true);
+    request.onload = function () {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
+      console.log(data);
+    }
+    // Send request
+    request.send();
+
+
     function getValue() {
       const y = document.getElementById('result');
       const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
       const z = (x / 100) * 20 + x;
+      // if(y = '£' + NaN) {
+      //   return(y.innerHTML = 'Please enter rent per week');
+      // }
       if(x <= 120) {
-        return(y.innerHTML = '£' + 144);
+        return(y.innerHTML = '£' + 144); // If x is 120 or below will dislplay 144 value as lowest possible membership price
       } else {
         (x / 100) * 20 + x
       }
@@ -45,19 +61,21 @@
     // }
 
 
+
     </script>
   </body>
 </html>
 
-// Create a request variable and assign a new XMLHttpRequest object to it.
-const request = new XMLHttpRequest();
-// Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/config', true);
-request.onload = function () {
-  // Begin accessing JSON data here
-}
-// Send request
-request.send();
+
+
+
+
+
+
+
+
+
+
 
 // Create a request variable and assign a new XMLHttpRequest object to it.
 const request = new XMLHttpRequest();
