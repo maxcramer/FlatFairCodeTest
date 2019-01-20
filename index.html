@@ -4,22 +4,25 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Single Page App FlatFair</title>
   </head>
-  <body>
-    <div id="app" class="card">
-      <form class="form" action="index.html" method="post">
-        <h2>Rent Per Week (£)</h2>
-        <input type="number" min="25" max="2000" id="foo" value="" required="true" >
-        <h2>Postcode</h2>
-        <input type="text" name="postcode" value="">
-        <h2>Membership Fee Total:</h2>
-        <h3 id="result"></h3>
-      </form>
-      <button class="button is-info is-outlined" onclick="getValue()" type="button" name="button">Click to find Membership fee</button>
-      <button class="button is-info is-outlined" type="submit" onclick="UserAction()">Submit</button>
-      <!-- <button class="button is-info is-outlined" type="button" name="button">Submit Flatbond</button> -->
+  <body class="background_color">
+    <div class="flex_center" >
+      <div id="app" class="card">
+        <img src="https://d6ca5q2o2y1xg.cloudfront.net/static/images/logo_main.38546a9879c7.png" alt="FlatFairLogo">
+        <h1 class="has-text-weight-semibold padding_top">Work Out your FlatFair Fee</h1>
+        <form class="form" action="index.html" method="post">
+          <h2 class="padding_top">Rent Per Week (£)</h2>
+          <input type="number" min="25" max="2000" id="foo" value="" required="true" >
+          <h2>Postcode</h2>
+          <input type="text" name="postcode" id="postCode" value="">
+          <h2>Membership Fee Total:</h2>
+          <h3 id="result"></h3>
+        </form>
+        <button class="button is-info" onclick="getValue()" type="button" name="button">Membership fee</button>
+        <button class="button is-info" type="submit" onclick="UserAction()">Submit</button>
+      </div>
     </div>
     <script>
     function getValue() {
@@ -67,17 +70,35 @@
     var xhttp = new XMLHttpRequest();
     const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
     const z = (x / 100) * 20 + x;
+    const postCode = document.getElementById('postCode');
     xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
              console.log(this);
-             console.log(z);
+             console.log(x);
+             console.log(postCode);
 
          }
     };
     xhttp.open("POST", "https://cxynbjn3wf.execute-api.eu-west-2.amazonaws.com/production/flatbond", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
+    xhttp.send(x, postCode);
 }
+
+  const y = document.getElementById('result');
+  const x = parseInt(document.getElementById('foo').value); // parseInt = INTERGER!
+  const z = (x / 100) * 20 + x;
+  const postCode = document.getElementById('postCode');
+
+  localStorage.setItem('x', `${x}`);
+  localStorage.setItem('postCode', postCode);
+  localStorage.setItem('z', z);
+
+  localStorage.getItem('x', `${x}`);
+  localStorage.getItem('postCode', postCode);
+  localStorage.getItem('z', z);
+
+
+
 
 
     </script>
